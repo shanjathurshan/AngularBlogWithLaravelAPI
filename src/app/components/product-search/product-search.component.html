@@ -1,0 +1,61 @@
+<p style="padding-top: 5rem;">product-search works!</p>
+
+<ng-container *ngIf="searchDatas.length !== 0; else elseTemplate">
+    <!-- <div *ngFor="let item of searchDatas">
+        {{item.name}}
+    </div> -->
+
+    <table class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">slug</th>
+            <th scope="col">description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of searchDatas; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ product.name }}</td>
+            <td>{{ product.slug }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td><button class="btn btn-success"  routerLink="edit/{{product.id}}">Update</button></td>
+            <td >
+              <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+              <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+                      <button type="button" #closebutton1 class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        Are you sure ?
+                        <br>
+                        <div class="col-10 m-auto py-3" style="justify-content: space-around;display: flex;">
+                          <button type="submit" class="btn btn-warning mt-3 col-5" #closebutton1 data-dismiss="modal" aria-label="Close">No</button>
+                          <button type="submit" class="btn btn-danger mt-3 col-5" (click)="deleteProduct(product.id)">Yes</button>
+                        </div>
+                    </div>
+    
+                  </div>
+                </div>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+</ng-container>
+<ng-template #elseTemplate>
+    Nothing
+</ng-template>
