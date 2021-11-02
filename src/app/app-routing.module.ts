@@ -8,6 +8,7 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
+  // { path: '', component: ProductComponent },
   { path: '', component: ProductComponent },
   { path: 'edit/:id', component: ProductEditComponent },
   { path: 'search/edit/:id', component: ProductEditComponent },

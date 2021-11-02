@@ -12,20 +12,21 @@ export class NavbarComponent implements OnInit {
   search: any;
   data: any;
   loggedinuser = [];
-  loggedIn = false;
+  isLoggedInCheck = false;
+
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { 
   
   }
 
   ngOnInit(): void {
-    console.log(this.dataService.isLoggedIn)
     // this.searchProduct();
-    this.loggedIn = this.dataService.isLoggedIn;
   }
 
+  isLoggedIn(){
+    return this.dataService.getToken();
+  }
   searchProduct(){
     this.dataService.serchProduct(this.search).subscribe( res => {
-      // console.log(res);
       this.data = res;
       this.router.navigate(['/search'], { state: { searchData: this.data } });
     });
@@ -34,6 +35,5 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/']);
-    window.location.reload();
   }
 }

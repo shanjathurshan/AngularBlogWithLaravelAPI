@@ -1,10 +1,9 @@
-<p style="padding-top: 5rem;">users works!</p>
+<!-- <p style="padding-top: 5rem;">users works!</p> -->
 
-<div *ngIf="isLoggedInCheck"> 
-  Hello {{userName}}.
+<div *ngIf="isLoggedInCheck" style="padding-top: 5rem;"> 
+  <h2>Hello {{userName}}!</h2> 
 </div>
 
-<button (click)="reloadPage()">test</button>
 <ngx-spinner
   bdColor="rgba(51,51,51,0.8)"
   size="medium"
